@@ -7,7 +7,7 @@ import requests
 from selenium import webdriver
 import pandas as pd
 import splinter
-
+import time
 
 
 def Mars_news():
@@ -42,7 +42,8 @@ def mars_image():
     # ------constaint errors throught the notebook without the above method added each time scraping happends on a new page-----
 
     mars_url = 'https://spaceimages-mars.com/'
-    browser.visit(mars_url)
+    browser.visit(url)
+    time.sleep(1)
 
     html_mars = browser.html
 
@@ -101,3 +102,7 @@ def mars_hemispheres():
         browser.back()
     return hemisphere_image_urls
 
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
