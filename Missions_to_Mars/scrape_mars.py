@@ -8,6 +8,16 @@ from selenium import webdriver
 import pandas as pd
 import splinter
 import time
+import sys
+
+# def init_browser():
+#     # @NOTE: Replace the path with your actual path to the chromedriver
+#     executable_path = {'executable_path': ChromeDriverManager().install()}
+#     browser = Browser('chrome', **executable_path, headless=False)
+
+
+
+# mars_information = {}
 
 
 def Mars_news():
@@ -18,6 +28,7 @@ def Mars_news():
     
     url = 'https://redplanetscience.com/'
     browser.visit(url)
+    time.sleep(1)
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -28,9 +39,10 @@ def Mars_news():
         "content title": news_title,
         "page article": news,
     }
+  
 
     # Quit the browser
-    browser.quit()
+    # browser.quit()
     return news_data
 
 def mars_image():
@@ -42,7 +54,7 @@ def mars_image():
     # ------constaint errors throught the notebook without the above method added each time scraping happends on a new page-----
 
     mars_url = 'https://spaceimages-mars.com/'
-    browser.visit(url)
+    browser.visit(mars_url)
     time.sleep(1)
 
     html_mars = browser.html
@@ -104,5 +116,3 @@ def mars_hemispheres():
 
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
